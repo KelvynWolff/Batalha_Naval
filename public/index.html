@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha Naval - Salas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Batalha Naval</h1>
+
+    <div id="lobby" class="lobby-container">
+        <div class="lobby-box">
+            <h2>Criar uma Nova Sala</h2>
+            <p>Clique no botão para criar uma sala e receber um código para compartilhar.</p>
+            <button id="create-room-btn">Criar Sala</button>
+        </div>
+        <div class="lobby-box">
+            <h2>Entrar em uma Sala</h2>
+            <p>Digite o código da sala para entrar em uma partida.</p>
+            <form id="join-room-form">
+                <input type="text" id="room-id-input" placeholder="Digite o código da sala" required>
+                <button type="submit">Entrar na Sala</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="game-container" class="hidden">
+        <div id="info" class="info-box">Conectando...</div>
+        <div id="room-info" class="room-info-box"></div>
+
+        <div class="boards-container">
+            <div>
+                <h2>Seu Tabuleiro</h2>
+                <div id="my-board" class="board"></div>
+            </div>
+            <div>
+                <h2>Tabuleiro do Oponente</h2>
+                <div id="opponent-board" class="board"></div>
+            </div>
+        </div>
+
+        <button id="setup-button" style="display: none;">Confirmar Posições</button>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>

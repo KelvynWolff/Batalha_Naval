@@ -1,0 +1,1635 @@
+{
+  "sala_mbebhiuq": {
+    "roomId": "sala_mbebhiuq",
+    "players": [
+      {
+        "_events": {
+          "close": [
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 2,
+        "_binaryType": "nodebuffer",
+        "_closeCode": 1006,
+        "_closeFrameReceived": false,
+        "_closeFrameSent": false,
+        "_closeMessage": {
+          "type": "Buffer",
+          "data": []
+        },
+        "_closeTimer": null,
+        "_errorEmitted": false,
+        "_extensions": {},
+        "_paused": false,
+        "_protocol": "",
+        "_readyState": 1,
+        "_receiver": {
+          "_events": {},
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 44,
+            "corked": 0,
+            "writelen": 44,
+            "bufferedIndex": 0,
+            "pendingcb": 1
+          },
+          "_allowSynchronousEvents": true,
+          "_binaryType": "nodebuffer",
+          "_extensions": {},
+          "_isServer": true,
+          "_maxPayload": 104857600,
+          "_skipUTF8Validation": false,
+          "_bufferedBytes": 0,
+          "_buffers": [],
+          "_compressed": false,
+          "_payloadLength": 38,
+          "_mask": {
+            "type": "Buffer",
+            "data": [
+              65,
+              230,
+              84,
+              238
+            ]
+          },
+          "_fragmented": 0,
+          "_masked": true,
+          "_fin": true,
+          "_opcode": 1,
+          "_totalPayloadLength": 0,
+          "_messageLength": 0,
+          "_fragments": [],
+          "_errored": false,
+          "_loop": true,
+          "_state": 4,
+          "_eventsCount": 6
+        },
+        "_sender": {
+          "_extensions": {},
+          "_socket": {
+            "connecting": false,
+            "_hadError": false,
+            "_parent": null,
+            "_host": null,
+            "_closeAfterHandlingError": false,
+            "_events": {
+              "end": [
+                null,
+                null
+              ]
+            },
+            "_readableState": {
+              "highWaterMark": 16384,
+              "buffer": [],
+              "bufferIndex": 0,
+              "length": 0,
+              "pipes": [],
+              "awaitDrainWriters": null
+            },
+            "_writableState": {
+              "highWaterMark": 16384,
+              "length": 0,
+              "corked": 0,
+              "writelen": 0,
+              "bufferedIndex": 0,
+              "pendingcb": 0
+            },
+            "allowHalfOpen": true,
+            "_eventsCount": 4,
+            "_sockname": null,
+            "_pendingData": null,
+            "_pendingEncoding": "",
+            "server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 2,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "_server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 2,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "parser": null,
+            "_paused": false,
+            "timeout": 0
+          },
+          "_firstFragment": true,
+          "_compress": false,
+          "_bufferedBytes": 0,
+          "_queue": [],
+          "_state": 0
+        },
+        "_socket": {
+          "connecting": false,
+          "_hadError": false,
+          "_parent": null,
+          "_host": null,
+          "_closeAfterHandlingError": false,
+          "_events": {
+            "end": [
+              null,
+              null
+            ]
+          },
+          "_readableState": {
+            "highWaterMark": 16384,
+            "buffer": [],
+            "bufferIndex": 0,
+            "length": 0,
+            "pipes": [],
+            "awaitDrainWriters": null
+          },
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 0,
+            "corked": 0,
+            "writelen": 0,
+            "bufferedIndex": 0,
+            "pendingcb": 0
+          },
+          "allowHalfOpen": true,
+          "_eventsCount": 4,
+          "_sockname": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 2,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "_server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 2,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "parser": null,
+          "_paused": false,
+          "timeout": 0
+        },
+        "_autoPong": true,
+        "_isServer": true,
+        "roomId": "sala_mbebhiuq"
+      },
+      {
+        "_events": {
+          "close": [
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 2,
+        "_binaryType": "nodebuffer",
+        "_closeCode": 1006,
+        "_closeFrameReceived": false,
+        "_closeFrameSent": false,
+        "_closeMessage": {
+          "type": "Buffer",
+          "data": []
+        },
+        "_closeTimer": null,
+        "_errorEmitted": false,
+        "_extensions": {},
+        "_paused": false,
+        "_protocol": "",
+        "_readyState": 1,
+        "_receiver": {
+          "_events": {},
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 0,
+            "corked": 0,
+            "writelen": 0,
+            "bufferedIndex": 0,
+            "pendingcb": 0
+          },
+          "_allowSynchronousEvents": true,
+          "_binaryType": "nodebuffer",
+          "_extensions": {},
+          "_isServer": true,
+          "_maxPayload": 104857600,
+          "_skipUTF8Validation": false,
+          "_bufferedBytes": 0,
+          "_buffers": [],
+          "_compressed": false,
+          "_payloadLength": 38,
+          "_mask": {
+            "type": "Buffer",
+            "data": [
+              167,
+              181,
+              189,
+              184
+            ]
+          },
+          "_fragmented": 0,
+          "_masked": true,
+          "_fin": true,
+          "_opcode": 1,
+          "_totalPayloadLength": 0,
+          "_messageLength": 0,
+          "_fragments": [],
+          "_errored": false,
+          "_loop": false,
+          "_state": 0,
+          "_eventsCount": 6
+        },
+        "_sender": {
+          "_extensions": {},
+          "_socket": {
+            "connecting": false,
+            "_hadError": false,
+            "_parent": null,
+            "_host": null,
+            "_closeAfterHandlingError": false,
+            "_events": {
+              "end": [
+                null,
+                null
+              ]
+            },
+            "_readableState": {
+              "highWaterMark": 16384,
+              "buffer": [],
+              "bufferIndex": 0,
+              "length": 0,
+              "pipes": [],
+              "awaitDrainWriters": null
+            },
+            "_writableState": {
+              "highWaterMark": 16384,
+              "length": 0,
+              "corked": 0,
+              "writelen": 0,
+              "bufferedIndex": 0,
+              "pendingcb": 0
+            },
+            "allowHalfOpen": true,
+            "_eventsCount": 4,
+            "_sockname": null,
+            "_pendingData": null,
+            "_pendingEncoding": "",
+            "server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 2,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "_server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 2,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "parser": null,
+            "_paused": false,
+            "timeout": 0
+          },
+          "_firstFragment": true,
+          "_compress": false,
+          "_bufferedBytes": 0,
+          "_queue": [],
+          "_state": 0
+        },
+        "_socket": {
+          "connecting": false,
+          "_hadError": false,
+          "_parent": null,
+          "_host": null,
+          "_closeAfterHandlingError": false,
+          "_events": {
+            "end": [
+              null,
+              null
+            ]
+          },
+          "_readableState": {
+            "highWaterMark": 16384,
+            "buffer": [],
+            "bufferIndex": 0,
+            "length": 0,
+            "pipes": [],
+            "awaitDrainWriters": null
+          },
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 0,
+            "corked": 0,
+            "writelen": 0,
+            "bufferedIndex": 0,
+            "pendingcb": 0
+          },
+          "allowHalfOpen": true,
+          "_eventsCount": 4,
+          "_sockname": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 2,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "_server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 2,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "parser": null,
+          "_paused": false,
+          "timeout": 0
+        },
+        "_autoPong": true,
+        "_isServer": true,
+        "roomId": "sala_mbebhiuq"
+      }
+    ],
+    "boards": [
+      [
+        [
+          "X",
+          "X",
+          "X",
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          "M",
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "shipsPlaced": [
+      true,
+      true
+    ],
+    "turn": 1,
+    "status": "gameover",
+    "winner": 0
+  },
+  "sala_mbebid2h": {
+    "roomId": "sala_mbebid2h",
+    "players": [
+      {
+        "_events": {
+          "close": [
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 2,
+        "_binaryType": "nodebuffer",
+        "_closeCode": 1006,
+        "_closeFrameReceived": false,
+        "_closeFrameSent": false,
+        "_closeMessage": {
+          "type": "Buffer",
+          "data": []
+        },
+        "_closeTimer": null,
+        "_errorEmitted": false,
+        "_extensions": {},
+        "_paused": false,
+        "_protocol": "",
+        "_readyState": 1,
+        "_receiver": {
+          "_events": {},
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 0,
+            "corked": 0,
+            "writelen": 0,
+            "bufferedIndex": 0,
+            "pendingcb": 0
+          },
+          "_allowSynchronousEvents": true,
+          "_binaryType": "nodebuffer",
+          "_extensions": {},
+          "_isServer": true,
+          "_maxPayload": 104857600,
+          "_skipUTF8Validation": false,
+          "_bufferedBytes": 0,
+          "_buffers": [],
+          "_compressed": false,
+          "_payloadLength": 0,
+          "_fragmented": 0,
+          "_masked": false,
+          "_fin": false,
+          "_opcode": 0,
+          "_totalPayloadLength": 0,
+          "_messageLength": 0,
+          "_fragments": [],
+          "_errored": false,
+          "_loop": false,
+          "_state": 0,
+          "_eventsCount": 6
+        },
+        "_sender": {
+          "_extensions": {},
+          "_socket": {
+            "connecting": false,
+            "_hadError": false,
+            "_parent": null,
+            "_host": null,
+            "_closeAfterHandlingError": false,
+            "_events": {
+              "end": [
+                null,
+                null
+              ]
+            },
+            "_readableState": {
+              "highWaterMark": 16384,
+              "buffer": [],
+              "bufferIndex": 0,
+              "length": 0,
+              "pipes": [],
+              "awaitDrainWriters": null
+            },
+            "_writableState": {
+              "highWaterMark": 16384,
+              "length": 0,
+              "corked": 0,
+              "writelen": 0,
+              "bufferedIndex": 0,
+              "pendingcb": 0
+            },
+            "allowHalfOpen": true,
+            "_eventsCount": 4,
+            "_sockname": null,
+            "_pendingData": null,
+            "_pendingEncoding": "",
+            "server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 3,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "_server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 3,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "parser": null,
+            "_paused": false,
+            "timeout": 0
+          },
+          "_firstFragment": true,
+          "_compress": false,
+          "_bufferedBytes": 0,
+          "_queue": [],
+          "_state": 0
+        },
+        "_socket": {
+          "connecting": false,
+          "_hadError": false,
+          "_parent": null,
+          "_host": null,
+          "_closeAfterHandlingError": false,
+          "_events": {
+            "end": [
+              null,
+              null
+            ]
+          },
+          "_readableState": {
+            "highWaterMark": 16384,
+            "buffer": [],
+            "bufferIndex": 0,
+            "length": 0,
+            "pipes": [],
+            "awaitDrainWriters": null
+          },
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 0,
+            "corked": 0,
+            "writelen": 0,
+            "bufferedIndex": 0,
+            "pendingcb": 0
+          },
+          "allowHalfOpen": true,
+          "_eventsCount": 4,
+          "_sockname": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 3,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "_server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 3,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "parser": null,
+          "_paused": false,
+          "timeout": 0
+        },
+        "_autoPong": true,
+        "_isServer": true,
+        "roomId": "sala_mbebid2h"
+      },
+      {
+        "_events": {},
+        "_eventsCount": 1,
+        "_binaryType": "nodebuffer",
+        "_closeCode": 1006,
+        "_closeFrameReceived": false,
+        "_closeFrameSent": false,
+        "_closeMessage": {
+          "type": "Buffer",
+          "data": []
+        },
+        "_closeTimer": null,
+        "_errorEmitted": false,
+        "_extensions": {},
+        "_paused": false,
+        "_protocol": "",
+        "_readyState": 1,
+        "_receiver": {
+          "_events": {},
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 0,
+            "corked": 0,
+            "writelen": 0,
+            "bufferedIndex": 0,
+            "pendingcb": 0
+          },
+          "_allowSynchronousEvents": true,
+          "_binaryType": "nodebuffer",
+          "_extensions": {},
+          "_isServer": true,
+          "_maxPayload": 104857600,
+          "_skipUTF8Validation": false,
+          "_bufferedBytes": 0,
+          "_buffers": [],
+          "_compressed": false,
+          "_payloadLength": 0,
+          "_fragmented": 0,
+          "_masked": false,
+          "_fin": false,
+          "_opcode": 0,
+          "_totalPayloadLength": 0,
+          "_messageLength": 0,
+          "_fragments": [],
+          "_errored": false,
+          "_loop": false,
+          "_state": 0,
+          "_eventsCount": 6
+        },
+        "_sender": {
+          "_extensions": {},
+          "_socket": {
+            "connecting": false,
+            "_hadError": false,
+            "_parent": null,
+            "_host": null,
+            "_closeAfterHandlingError": false,
+            "_events": {
+              "end": [
+                null,
+                null
+              ]
+            },
+            "_readableState": {
+              "highWaterMark": 16384,
+              "buffer": [],
+              "bufferIndex": 0,
+              "length": 0,
+              "pipes": [],
+              "awaitDrainWriters": null
+            },
+            "_writableState": {
+              "highWaterMark": 16384,
+              "length": 0,
+              "corked": 0,
+              "writelen": 0,
+              "bufferedIndex": 0,
+              "pendingcb": 0
+            },
+            "allowHalfOpen": true,
+            "_eventsCount": 4,
+            "_sockname": null,
+            "_pendingData": null,
+            "_pendingEncoding": "",
+            "server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 3,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "_server": {
+              "requestTimeout": 300000,
+              "headersTimeout": 60000,
+              "keepAliveTimeout": 5000,
+              "connectionsCheckingInterval": 30000,
+              "requireHostHeader": true,
+              "rejectNonStandardBodyWrites": false,
+              "_events": {
+                "listening": [
+                  null,
+                  null
+                ]
+              },
+              "_eventsCount": 5,
+              "_connections": 3,
+              "_handle": {
+                "reading": false
+              },
+              "_usingWorkers": false,
+              "_workers": [],
+              "_unref": false,
+              "_listeningId": 2,
+              "allowHalfOpen": true,
+              "pauseOnConnect": false,
+              "noDelay": true,
+              "keepAlive": false,
+              "keepAliveInitialDelay": 0,
+              "highWaterMark": 16384,
+              "httpAllowHalfOpen": false,
+              "timeout": 0,
+              "maxHeadersCount": null,
+              "maxRequestsPerSocket": 0,
+              "_connectionKey": "6::::3000"
+            },
+            "parser": null,
+            "_paused": false,
+            "timeout": 0
+          },
+          "_firstFragment": true,
+          "_compress": false,
+          "_bufferedBytes": 0,
+          "_queue": [],
+          "_state": 0
+        },
+        "_socket": {
+          "connecting": false,
+          "_hadError": false,
+          "_parent": null,
+          "_host": null,
+          "_closeAfterHandlingError": false,
+          "_events": {
+            "end": [
+              null,
+              null
+            ]
+          },
+          "_readableState": {
+            "highWaterMark": 16384,
+            "buffer": [],
+            "bufferIndex": 0,
+            "length": 0,
+            "pipes": [],
+            "awaitDrainWriters": null
+          },
+          "_writableState": {
+            "highWaterMark": 16384,
+            "length": 0,
+            "corked": 0,
+            "writelen": 0,
+            "bufferedIndex": 0,
+            "pendingcb": 0
+          },
+          "allowHalfOpen": true,
+          "_eventsCount": 4,
+          "_sockname": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 3,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "_server": {
+            "requestTimeout": 300000,
+            "headersTimeout": 60000,
+            "keepAliveTimeout": 5000,
+            "connectionsCheckingInterval": 30000,
+            "requireHostHeader": true,
+            "rejectNonStandardBodyWrites": false,
+            "_events": {
+              "listening": [
+                null,
+                null
+              ]
+            },
+            "_eventsCount": 5,
+            "_connections": 3,
+            "_handle": {
+              "reading": false
+            },
+            "_usingWorkers": false,
+            "_workers": [],
+            "_unref": false,
+            "_listeningId": 2,
+            "allowHalfOpen": true,
+            "pauseOnConnect": false,
+            "noDelay": true,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 0,
+            "highWaterMark": 16384,
+            "httpAllowHalfOpen": false,
+            "timeout": 0,
+            "maxHeadersCount": null,
+            "maxRequestsPerSocket": 0,
+            "_connectionKey": "6::::3000"
+          },
+          "parser": null,
+          "_paused": false,
+          "timeout": 0
+        },
+        "_autoPong": true,
+        "_isServer": true,
+        "roomId": "sala_mbebid2h"
+      }
+    ],
+    "boards": [
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "shipsPlaced": [
+      false,
+      false
+    ],
+    "turn": 0,
+    "status": "setup",
+    "winner": null
+  }
+}
