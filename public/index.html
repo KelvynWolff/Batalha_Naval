@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Batalha Naval</h1>
 
@@ -30,14 +32,28 @@
         <div id="info" class="info-box">Conectando...</div>
         <div id="room-info" class="room-info-box"></div>
 
-        <div class="boards-container">
-            <div>
-                <h2>Seu Tabuleiro</h2>
-                <div id="my-board" class="board"></div>
+        <div id="ship-dock" class="hidden">
+            <p>Sua Frota (Pressione 'R' para girar)</p>
+            <div class="ship-list">
             </div>
-            <div>
+        </div>
+        <div class="boards-container">
+            <div class="board-area">
+                <h2>Seu Tabuleiro</h2>
+                <div class="board-container">
+                    <div class="board-labels-cols"></div>
+                    <div class="board-labels-rows"></div>
+                    <div id="my-board" class="board"></div>
+                </div>
+            </div>
+
+            <div class="board-area">
                 <h2>Tabuleiro do Oponente</h2>
-                <div id="opponent-board" class="board"></div>
+                <div class="board-container">
+                    <div class="board-labels-cols"></div>
+                    <div class="board-labels-rows"></div>
+                    <div id="opponent-board" class="board"></div>
+                </div>
             </div>
         </div>
 
@@ -46,4 +62,5 @@
 
     <script src="client.js"></script>
 </body>
+
 </html>
