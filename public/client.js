@@ -68,7 +68,7 @@ function connectToRoom(roomId) {
     alert('Código da sala copiado!');
   });
 
-  ws = new WebSocket(`ws://${window.location.host}?roomId=${roomId}`);
+  ws = new WebSocket(`wss://${window.location.host}?roomId=${roomId}`);
   ws.onopen = () => {
     infoDiv.textContent = 'Conectado à sala! Aguardando outro jogador...';
   };
