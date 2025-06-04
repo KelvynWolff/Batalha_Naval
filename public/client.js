@@ -1,5 +1,3 @@
-/** @format */
-
 const lobbyDiv = document.getElementById('lobby');
 const createRoomBtn = document.getElementById('create-room-btn');
 const joinRoomForm = document.getElementById('join-room-form');
@@ -25,6 +23,7 @@ const FLEET = [
 let ws;
 let playerIndex = -1;
 let myTurn = false;
+let isSetupModeActive = false;
 
 createRoomBtn.addEventListener('click', async () => {
   try {
@@ -69,11 +68,14 @@ function connectToRoom(roomId) {
   });
 
   ws = new WebSocket(`wss://${window.location.host}?roomId=${roomId}`);
+
   ws.onopen = () => {
     infoDiv.textContent = 'Conectado à sala! Aguardando outro jogador...';
   };
   ws.onclose = () => {
     infoDiv.textContent = 'Desconectado da sala.';
+    alert('Você foi desconectado. A página será recarregada.');
+    window.location.reload();
   };
   ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
@@ -143,22 +145,11 @@ const renderBoard = (
 
       const cellValue = boardData[y]?.[x] ?? 0;
 
-      cell.classList.remove(
-        'ship',
-        'hit',
-        'miss',
-        'ship-hit',
-        'preview-valid',
-        'preview-invalid'
-      );
+      cell.className = 'cell';
       cell.style.backgroundImage = '';
 
       if (cellValue === 'X') {
-        if (isOpponentBoard) {
-          cell.classList.add('hit');
-        } else {
-          cell.classList.add('ship-hit');
-        }
+        cell.classList.add(isOpponentBoard ? 'hit' : 'ship-hit');
       } else if (cellValue === 'M') {
         cell.classList.add('miss');
       } else if (cellValue === 1) {
@@ -173,16 +164,9 @@ const renderBoard = (
 function handleGameUpdate(state) {
   myTurn = state.turn === playerIndex;
   const isGameOver = state.status === 'gameover';
-  const myBoardData =
-    state.boards[playerIndex] ||
-    Array(10)
-      .fill(null)
-      .map(() => Array(10).fill(0));
-  const opponentBoardData =
-    state.boards[1 - playerIndex] ||
-    Array(10)
-      .fill(null)
-      .map(() => Array(10).fill(0));
+
+  const myBoardData = state.boards[playerIndex] || Array(10).fill(0).map(() => Array(10).fill(0));
+  const opponentBoardData = state.boards[1 - playerIndex] || Array(10).fill(0).map(() => Array(10).fill(0));
 
   renderBoard(myBoardDiv, myBoardData, false, isGameOver);
   renderBoard(opponentBoardDiv, opponentBoardData, true, isGameOver);
@@ -191,33 +175,26 @@ function handleGameUpdate(state) {
 }
 
 const setupMyBoard = () => {
-  let localBoard = Array(10)
-    .fill(null)
-    .map(() => Array(10).fill(0));
+  let localBoard = Array(10).fill(null).map(() => Array(10).fill(0));
   let shipsToPlace = JSON.parse(JSON.stringify(FLEET));
   let selectedShipData = null;
   let currentOrientation = 'horizontal';
 
   shipDockDiv.classList.remove('hidden');
   renderShipList();
-  infoDiv.textContent =
-    'Selecione um navio e posicione-o. Pressione "R" para girar.';
 
   document.addEventListener('keydown', handleRotation);
   myBoardDiv.addEventListener('mouseover', handlePreview);
   myBoardDiv.addEventListener('mouseout', clearPreview);
   myBoardDiv.addEventListener('click', placeShipOnClick);
+  myBoardDiv.style.cursor = 'crosshair';
 
   function renderShipList() {
     shipListDiv.innerHTML = '';
     shipsToPlace.forEach((ship, index) => {
       const shipItem = document.createElement('div');
       shipItem.className = 'ship-item';
-      shipItem.dataset.originalIndex = FLEET.findIndex(
-        (fShip) => fShip.name === ship.name && fShip.size === ship.size
-      );
       shipItem.dataset.currentListIndex = index;
-
       shipItem.innerHTML = `<div class="ship-name">${ship.name} (${ship.size})</div>`;
       const previewDiv = document.createElement('div');
       previewDiv.className = 'ship-preview';
@@ -228,59 +205,33 @@ const setupMyBoard = () => {
       shipItem.addEventListener('click', () => selectShip(ship, index));
       shipListDiv.appendChild(shipItem);
     });
-
     if (selectedShipData) {
-      const stillAvailable = shipsToPlace.find(
-        (s) =>
-          s.name === selectedShipData.ship.name &&
-          s.size === selectedShipData.ship.size
-      );
-      if (stillAvailable) {
-        const itemToSelect = Array.from(shipListDiv.children).find((child) => {
-          const shipInList =
-            shipsToPlace[parseInt(child.dataset.currentListIndex)];
-          return (
-            shipInList &&
-            shipInList.name === selectedShipData.ship.name &&
-            shipInList.size === selectedShipData.ship.size
-          );
-        });
-        if (itemToSelect) itemToSelect.classList.add('selected');
-      } else {
-        selectedShipData = null;
-      }
+        const stillAvailable = shipsToPlace.some(s => s.name === selectedShipData.ship.name);
+        if (stillAvailable) {
+            const itemToSelect = Array.from(shipListDiv.children).find(child => {
+                const shipInList = shipsToPlace[parseInt(child.dataset.currentListIndex)];
+                return shipInList && shipInList.name === selectedShipData.ship.name;
+            });
+            if (itemToSelect) itemToSelect.classList.add('selected');
+        } else {
+            selectedShipData = null;
+        }
     }
   }
 
   function selectShip(ship, currentListIndex) {
-    selectedShipData = {
-      ship: { ...ship },
-      currentListIndex: currentListIndex,
-      orientation: currentOrientation,
-    };
-    document
-      .querySelectorAll('.ship-item')
-      .forEach((item) => item.classList.remove('selected'));
-
-    const shipElement = shipListDiv.querySelector(
-      `.ship-item[data-current-list-index='${currentListIndex}']`
-    );
-    if (shipElement) {
-      shipElement.classList.add('selected');
-    }
+    selectedShipData = { ship, currentListIndex, orientation: currentOrientation };
+    document.querySelectorAll('.ship-item').forEach((item) => item.classList.remove('selected'));
+    const shipElement = shipListDiv.querySelector(`.ship-item[data-current-list-index='${currentListIndex}']`);
+    if (shipElement) shipElement.classList.add('selected');
   }
 
   function handleRotation(e) {
     if (e.key.toLowerCase() === 'r' && selectedShipData) {
-      currentOrientation =
-        currentOrientation === 'horizontal' ? 'vertical' : 'horizontal';
+      currentOrientation = currentOrientation === 'horizontal' ? 'vertical' : 'horizontal';
       selectedShipData.orientation = currentOrientation;
-
       const hoveredCell = myBoardDiv.querySelector('.cell:hover');
-      if (hoveredCell && hoveredCell.dataset.x) {
-        const event = new MouseEvent('mouseover', { bubbles: true });
-        hoveredCell.dispatchEvent(event);
-      }
+      if (hoveredCell) hoveredCell.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
     }
   }
 
@@ -288,96 +239,57 @@ const setupMyBoard = () => {
     if (!selectedShipData) return [];
     let cells = [];
     for (let i = 0; i < selectedShipData.ship.size; i++) {
-      if (selectedShipData.orientation === 'horizontal') {
-        cells.push({ x: x + i, y: y });
-      } else {
-        cells.push({ x: x, y: y + i });
-      }
+      cells.push(selectedShipData.orientation === 'horizontal' ? { x: x + i, y } : { x, y: y + i });
     }
     return cells;
   }
 
   function handlePreview(e) {
-    if (
-      !selectedShipData ||
-      !e.target.classList.contains('cell') ||
-      !e.target.dataset.x
-    )
-      return;
+    if (!selectedShipData || !e.target.classList.contains('cell')) return;
     clearPreview();
-
     const x = parseInt(e.target.dataset.x);
     const y = parseInt(e.target.dataset.y);
     const shipCells = getShipCellsForPreview(x, y);
-    const isValidPlacement = canPlaceShip(shipCells);
-
-    shipCells.forEach((cellPos) => {
-      const cellDiv = myBoardDiv.querySelector(
-        `.cell[data-x='${cellPos.x}'][data-y='${cellPos.y}']`
-      );
-      if (cellDiv) {
-        cellDiv.classList.add(
-          isValidPlacement ? 'preview-valid' : 'preview-invalid'
-        );
-      }
+    const isValid = canPlaceShip(shipCells);
+    shipCells.forEach((pos) => {
+      const cellDiv = myBoardDiv.querySelector(`.cell[data-x='${pos.x}'][data-y='${pos.y}']`);
+      if (cellDiv) cellDiv.classList.add(isValid ? 'preview-valid' : 'preview-invalid');
     });
   }
 
   function clearPreview() {
-    myBoardDiv.querySelectorAll('.cell').forEach((c) => {
-      c.classList.remove('preview-valid', 'preview-invalid');
-    });
+    myBoardDiv.querySelectorAll('.cell').forEach((c) => c.classList.remove('preview-valid', 'preview-invalid'));
   }
 
   function canPlaceShip(shipCells) {
-    return shipCells.every((cellPos) => {
-      return (
-        cellPos.x >= 0 &&
-        cellPos.x < 10 &&
-        cellPos.y >= 0 &&
-        cellPos.y < 10 &&
-        localBoard[cellPos.y][cellPos.x] === 0
-      );
-    });
+    return shipCells.every(pos =>
+      pos.x >= 0 && pos.x < 10 && pos.y >= 0 && pos.y < 10 && localBoard[pos.y][pos.x] === 0
+    );
   }
 
   function placeShipOnClick(e) {
-    if (
-      !selectedShipData ||
-      !e.target.classList.contains('cell') ||
-      !e.target.dataset.x
-    )
-      return;
-
+    if (!selectedShipData || !e.target.classList.contains('cell')) return;
     const x = parseInt(e.target.dataset.x);
     const y = parseInt(e.target.dataset.y);
     const shipCellsToPlace = getShipCellsForPreview(x, y);
 
     if (canPlaceShip(shipCellsToPlace)) {
-      shipCellsToPlace.forEach((cellPos) => {
-        localBoard[cellPos.y][cellPos.x] = 1;
-        myBoardDiv
-          .querySelector(`.cell[data-x='${cellPos.x}'][data-y='${cellPos.y}']`)
-          .classList.add('ship');
+      shipCellsToPlace.forEach((pos) => {
+        localBoard[pos.y][pos.x] = 1;
+        myBoardDiv.querySelector(`.cell[data-x='${pos.x}'][data-y='${pos.y}']`).classList.add('ship');
       });
-
       shipsToPlace.splice(selectedShipData.currentListIndex, 1);
       selectedShipData = null;
-      currentOrientation = 'horizontal';
       renderShipList();
       clearPreview();
-
-      if (shipsToPlace.length === 0) {
-        finishSetupPhase();
-      }
+      if (shipsToPlace.length === 0) finishSetupPhase();
     }
   }
 
   function finishSetupPhase() {
-    infoDiv.textContent = 'Frota posicionada! Clique em "Confirmar Posições".';
+    infoDiv.textContent = 'Frota posicionada! Clique em "Confirmar Posições" para travar.';
     setupButton.style.display = 'block';
     shipDockDiv.classList.add('hidden');
-
     document.removeEventListener('keydown', handleRotation);
     myBoardDiv.removeEventListener('mouseover', handlePreview);
     myBoardDiv.removeEventListener('mouseout', clearPreview);
@@ -388,6 +300,7 @@ const setupMyBoard = () => {
       setupButton.style.display = 'none';
       ws.send(JSON.stringify({ type: 'place_ships', board: localBoard }));
       infoDiv.textContent = 'Aguardando o oponente posicionar os navios...';
+      isSetupModeActive = false;
     };
   }
 };
@@ -398,53 +311,44 @@ const updateStatus = (state) => {
       infoDiv.textContent = 'Aguardando oponente...';
       break;
     case 'setup':
-      opponentBoardDiv.style.pointerEvents = 'none';
-      if (!state.shipsPlaced[playerIndex]) {
-        setupMyBoard();
+      const isMyTurnToSetup = state.setupTurn === playerIndex && !state.shipsPlaced[playerIndex];
+      
+      if (isMyTurnToSetup) {
+        if (!isSetupModeActive) {
+          setupMyBoard();
+          isSetupModeActive = true;
+        }
+        infoDiv.textContent = 'Sua vez de posicionar a frota. Pressione "R" para girar.';
       } else {
-        infoDiv.textContent = 'Aguardando o oponente posicionar os navios...';
+        infoDiv.textContent = 'Aguardando o oponente posicionar a frota...';
         shipDockDiv.classList.add('hidden');
+        myBoardDiv.style.cursor = 'default';
       }
+      opponentBoardDiv.style.pointerEvents = 'none';
       break;
     case 'playing':
       shipDockDiv.classList.add('hidden');
       myBoardDiv.style.cursor = 'default';
       opponentBoardDiv.style.pointerEvents = 'auto';
-      infoDiv.textContent = myTurn
-        ? 'Sua vez de atirar!'
-        : 'Aguarde a vez do oponente.';
+      infoDiv.textContent = myTurn ? 'Sua vez de atirar!' : 'Aguarde a vez do oponente.';
       break;
     case 'gameover':
       opponentBoardDiv.style.pointerEvents = 'none';
-      infoDiv.textContent =
-        state.winner === playerIndex
-          ? 'Fim de Jogo: Você Venceu!'
-          : 'Fim de Jogo: Você Perdeu.';
+      infoDiv.textContent = state.winner === playerIndex ? 'Fim de Jogo: Você Venceu!' : 'Fim de Jogo: Você Perdeu.';
       break;
   }
 };
 
 const fire = (x, y) => {
-  const targetCell = opponentBoardDiv.querySelector(
-    `.cell[data-x='${x}'][data-y='${y}']`
-  );
-  if (
-    !myTurn ||
-    targetCell.classList.contains('hit') ||
-    targetCell.classList.contains('miss')
-  ) {
+  const targetCell = opponentBoardDiv.querySelector(`.cell[data-x='${x}'][data-y='${y}']`);
+  if (!myTurn || targetCell.classList.contains('hit') || targetCell.classList.contains('miss')) {
     return;
   }
   ws.send(JSON.stringify({ type: 'fire', coords: { x, y } }));
 };
 
 opponentBoardDiv.addEventListener('click', (e) => {
-  if (
-    e.target.classList.contains('cell') &&
-    e.target.dataset.x &&
-    e.target.dataset.y &&
-    e.target.closest('.board')
-  ) {
+  if (e.target.classList.contains('cell') && e.target.closest('.board')) {
     fire(parseInt(e.target.dataset.x), parseInt(e.target.dataset.y));
   }
 });

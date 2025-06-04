@@ -1,5 +1,3 @@
-/** @format */
-
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
@@ -11,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const GAME_STATE_FILE = path.join(__dirname, 'game.json');
 
@@ -34,7 +32,6 @@ const saveGames = (games) => {
 };
 
 let games = loadGames();
-
 const connections = {};
 
 const createNewGameState = () => ({
@@ -50,11 +47,11 @@ const createNewGameState = () => ({
   shipsPlaced: [false, false],
   turn: 0,
   status: 'waiting',
+  setupTurn: 0,
   winner: null,
 });
 
 app.post('/api/create-room', (req, res) => {
-  // Gera um ID de sala único e curto
   const roomId = `sala_${Date.now().toString(36).slice(-4)}`;
   games[roomId] = createNewGameState();
   connections[roomId] = [null, null];
@@ -102,9 +99,7 @@ wss.on('connection', (ws, req) => {
   const playerId = `player_${Date.now().toString(36)}`;
   ws.roomId = roomId;
   ws.playerIndex = playerIndex;
-
   room.players[playerIndex] = playerId;
-
   roomConnections[playerIndex] = ws;
 
   console.log(
@@ -125,11 +120,25 @@ wss.on('connection', (ws, req) => {
     const playerIdx = ws.playerIndex;
 
     if (data.type === 'place_ships' && currentRoom.status === 'setup') {
+      if (currentRoom.setupTurn !== playerIdx) {
+        console.warn(`Jogador ${playerIdx} tentou posicionar fora da sua vez.`);
+        return;
+      }
+      if (currentRoom.shipsPlaced[playerIdx]) {
+        console.warn(`Jogador ${playerIdx} tentou posicionar novamente.`);
+        return;
+      }
+
       currentRoom.boards[playerIdx] = data.board;
       currentRoom.shipsPlaced[playerIdx] = true;
 
+      if (playerIdx === 0) {
+        currentRoom.setupTurn = 1;
+      }
+
       if (currentRoom.shipsPlaced.every((placed) => placed)) {
         currentRoom.status = 'playing';
+        currentRoom.turn = Math.floor(Math.random() * 2);
       }
       broadcastToRoom(ws.roomId);
     }
@@ -141,11 +150,12 @@ wss.on('connection', (ws, req) => {
       const { x, y } = data.coords;
       const opponentIndex = 1 - playerIdx;
       const targetBoard = currentRoom.boards[opponentIndex];
+      if (targetBoard[y][x] === 'X' || targetBoard[y][x] === 'M') return;
+      
       const cell = targetBoard[y][x];
 
       if (cell === 1) {
         targetBoard[y][x] = 'X';
-
         if (!targetBoard.flat().includes(1)) {
           currentRoom.status = 'gameover';
           currentRoom.winner = playerIdx;
@@ -164,23 +174,20 @@ wss.on('connection', (ws, req) => {
   ws.on('close', () => {
     const currentRoom = games[ws.roomId];
     if (!currentRoom) return;
-
     console.log(`Jogador ${ws.playerIndex} desconectado da sala ${ws.roomId}.`);
-
     if (currentRoom.status !== 'waiting' && currentRoom.status !== 'gameover') {
       currentRoom.status = 'gameover';
       currentRoom.winner = 1 - ws.playerIndex;
     }
-
     currentRoom.players[ws.playerIndex] = null;
-    connections[ws.roomId][ws.playerIndex] = null;
-
-    if (connections[ws.roomId].every((c) => c === null)) {
-      console.log(`Sala ${ws.roomId} está vazia. Removendo.`);
-      delete games[ws.roomId];
-      delete connections[ws.roomId];
+    if (connections[ws.roomId]) {
+        connections[ws.roomId][ws.playerIndex] = null;
+        if (connections[ws.roomId].every((c) => c === null)) {
+            console.log(`Sala ${ws.roomId} está vazia. Removendo.`);
+            delete games[ws.roomId];
+            delete connections[ws.roomId];
+        }
     }
-
     broadcastToRoom(ws.roomId);
     saveGames(games);
   });
@@ -191,20 +198,18 @@ function broadcastToRoom(roomId) {
   if (!room) return;
 
   const roomConnections = connections[roomId];
+  if (!roomConnections) return;
 
   roomConnections.forEach((ws, playerIndex) => {
     if (ws && ws.readyState === WebSocket.OPEN) {
-      const stateToSend = {
-        ...room,
-
-        boards: JSON.parse(JSON.stringify(room.boards)),
-      };
-
+      const stateToSend = JSON.parse(JSON.stringify(room));
       const opponentIndex = 1 - playerIndex;
-      stateToSend.boards[opponentIndex] = stateToSend.boards[opponentIndex].map(
-        (row) => row.map((cell) => (cell === 1 ? 0 : cell))
-      );
 
+      if (stateToSend.boards[opponentIndex]) {
+        stateToSend.boards[opponentIndex] = stateToSend.boards[
+          opponentIndex
+        ].map((row) => row.map((cell) => (cell === 1 ? 0 : cell)));
+      }
       ws.send(JSON.stringify({ type: 'update', state: stateToSend }));
     }
   });
